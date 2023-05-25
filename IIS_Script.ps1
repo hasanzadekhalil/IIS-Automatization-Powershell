@@ -58,7 +58,7 @@ if ($existingCertificate) {
 else {
     # Create Let's Encrypt SSL certificate
     $siteId = $website.Id
-    & $winAcmeExePath --target manual --host $DomainName --installationsiteid $siteId
+    & $winAcmeExePath --target manual --host $DomainName --installationsiteid $siteId --accepttos --email $EmailAddress
 
     # Get the thumbprint of the newly created certificate
     $thumbprint = (Get-ChildItem -Path $certStore | Where-Object { $_.Subject -like "*$DomainName*" }).Thumbprint
